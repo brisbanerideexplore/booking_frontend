@@ -1,0 +1,370 @@
+/* ==========================================================================
+   Admin — shared page shell
+   ========================================================================== */
+
+.admin-page {
+  min-height: calc(100vh - 73px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background:
+    radial-gradient(circle at 18% -10%, rgba(184, 134, 59, 0.09), transparent 45%),
+    var(--cloud);
+}
+
+.admin-page--panel {
+  display: block;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 48px 24px 90px;
+}
+
+/* ==========================================================================
+   Login card
+   ========================================================================== */
+
+.admin-card {
+  width: 100%;
+  max-width: 380px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 42px 36px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+  animation: admin-card-rise 0.6s var(--ease);
+}
+
+.admin-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--brass-deep), var(--brass), var(--brass-light));
+}
+
+.admin-card h2 {
+  font-size: 22px;
+  margin-bottom: 26px;
+  color: var(--ink);
+}
+
+.admin-card label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: var(--ink-muted);
+  margin: 18px 0 6px;
+}
+
+.admin-card label:first-of-type {
+  margin-top: 0;
+}
+
+.admin-card input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--cloud);
+  font-size: 14px;
+  color: var(--ink);
+  transition: border-color 0.25s var(--ease), background 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+
+.admin-card input:focus {
+  outline: none;
+  border-color: var(--brass);
+  background: var(--paper);
+  box-shadow: 0 0 0 4px rgba(184, 134, 59, 0.14);
+}
+
+.admin-error {
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--danger);
+  background: var(--danger-soft);
+  padding: 10px 12px;
+  border-radius: 8px;
+}
+
+.admincard-btn {
+  margin-top: 26px;
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 10px;
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  transition: transform 0.25s var(--ease), background 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+
+.admincard-btn:hover:not(:disabled) {
+  background: var(--brass-deep);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.admincard-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.admincard-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@keyframes admin-card-rise {
+  from { opacity: 0; transform: translateY(14px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ==========================================================================
+   Panel topbar & tabs
+   ========================================================================== */
+
+.admin-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.admin-topbar h1 {
+  font-size: 24px;
+}
+
+.admin-logout {
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink-soft);
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.25s var(--ease);
+}
+
+.admin-logout:hover {
+  border-color: var(--danger);
+  color: var(--danger);
+  background: var(--danger-soft);
+}
+
+.admin-tabs {
+  display: flex;
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--line);
+}
+
+.admin-tabs button {
+  position: relative;
+  background: none;
+  border: none;
+  padding: 12px 4px;
+  margin-right: 26px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-muted);
+  transition: color 0.25s var(--ease);
+}
+
+.admin-tabs button::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--brass);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--ease);
+}
+
+.admin-tabs button:hover {
+  color: var(--ink);
+}
+
+.admin-tabs button.active {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.admin-tabs button.active::after {
+  transform: scaleX(1);
+}
+
+.admin-section {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
+  animation: admin-section-in 0.4s var(--ease);
+}
+
+@keyframes admin-section-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   Rate manager form
+   ========================================================================== */
+
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 520px;
+  margin-bottom: 36px;
+  padding-bottom: 32px;
+  border-bottom: 1px dashed var(--line);
+}
+
+.admin-form h3 {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.admin-form input {
+  padding: 11px 13px;
+  border-radius: 9px;
+  border: 1px solid var(--line);
+  background: var(--cloud);
+  font-size: 14px;
+  color: var(--ink);
+  transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.25s var(--ease);
+}
+
+.admin-form input:focus {
+  outline: none;
+  border-color: var(--brass);
+  background: var(--paper);
+  box-shadow: 0 0 0 4px rgba(184, 134, 59, 0.14);
+}
+
+.admin-form input:disabled {
+  opacity: 0.55;
+}
+
+.admin-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.admin-form__actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.admin-form__actions button[type="submit"] {
+  padding: 11px 22px;
+  border: none;
+  border-radius: 9px;
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 600;
+  font-size: 13.5px;
+  transition: all 0.25s var(--ease);
+}
+
+.admin-form__actions button[type="submit"]:hover {
+  background: var(--brass-deep);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.admin-form__actions button[type="button"] {
+  padding: 11px 22px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: transparent;
+  color: var(--ink-muted);
+  font-size: 13.5px;
+  transition: all 0.25s var(--ease);
+}
+
+.admin-form__actions button[type="button"]:hover {
+  border-color: var(--ink-muted);
+  color: var(--ink);
+}
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+.admin-table thead th {
+  text-align: left;
+  padding: 10px 12px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--ink-muted);
+  letter-spacing: 0.3px;
+  border-bottom: 2px solid var(--line);
+}
+
+.admin-table tbody td {
+  padding: 13px 12px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-soft);
+}
+
+.admin-table tbody tr {
+  transition: background 0.2s var(--ease);
+}
+
+.admin-table tbody tr:hover {
+  background: var(--cloud);
+}
+
+.admin-table tbody button {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  padding: 6px 12px;
+  border-radius: 7px;
+  font-size: 12.5px;
+  margin-right: 6px;
+  color: var(--ink-soft);
+  transition: all 0.2s var(--ease);
+}
+
+.admin-table tbody button:hover {
+  border-color: var(--brass);
+  color: var(--brass-deep);
+}
+
+.admin-table tbody button:last-child:hover {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+@media (max-width: 640px) {
+  .admin-form__row {
+    grid-template-columns: 1fr;
+  }
+  .admin-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
