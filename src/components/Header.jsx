@@ -18,7 +18,7 @@ export default function Header() {
             <img src={logo} alt="Company logo" />
           </div>
           <div className="site-header__wordmark">
-            YourBrand
+            Brizzy ride & explore
             <span>Airport transfers</span>
           </div>
         </a>
