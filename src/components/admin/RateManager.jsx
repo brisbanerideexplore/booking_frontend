@@ -6,7 +6,7 @@ const authHeaders = () => ({
   Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
 });
 
-const emptyForm = { vehicle: "", tagline: "", baseFare: "", perKm: "", perMin: "", minFare: "" };
+const emptyForm = { vehicle: "", tagline: "", baseFare: "", perKm: "", tierThresholdKm: "", perKmAfterThreshold: "", perMin: "", minFare: "" };
 
 export default function RateManager() {
   const [rates, setRates] = useState([]);
@@ -26,7 +26,10 @@ export default function RateManager() {
     setEditingId(rate._id);
     setForm({
       vehicle: rate.vehicle, tagline: rate.tagline || "",
-      baseFare: rate.baseFare, perKm: rate.perKm, perMin: rate.perMin, minFare: rate.minFare || 0,
+      baseFare: rate.baseFare, perKm: rate.perKm,
+      tierThresholdKm: rate.tierThresholdKm || 0,
+      perKmAfterThreshold: rate.perKmAfterThreshold || 0,
+      perMin: rate.perMin, minFare: rate.minFare || 0,
     });
   };
 
@@ -38,6 +41,8 @@ export default function RateManager() {
     const payload = {
       vehicle: form.vehicle, tagline: form.tagline,
       baseFare: Number(form.baseFare), perKm: Number(form.perKm),
+      tierThresholdKm: Number(form.tierThresholdKm || 0),
+      perKmAfterThreshold: Number(form.perKmAfterThreshold || 0),
       perMin: Number(form.perMin), minFare: Number(form.minFare || 0),
     };
 
@@ -72,6 +77,12 @@ export default function RateManager() {
             onChange={(e) => setForm({ ...form, baseFare: e.target.value })} required />
           <input type="number" step="0.01" placeholder="Per km" value={form.perKm}
             onChange={(e) => setForm({ ...form, perKm: e.target.value })} required />
+        </div>
+        <div className="admin-form__row">
+          <input type="number" step="0.01" placeholder="Tier threshold (km, 0 = no tier)" value={form.tierThresholdKm}
+            onChange={(e) => setForm({ ...form, tierThresholdKm: e.target.value })} />
+          <input type="number" step="0.01" placeholder="Per km after threshold" value={form.perKmAfterThreshold}
+            onChange={(e) => setForm({ ...form, perKmAfterThreshold: e.target.value })} />
         </div>
         <div className="admin-form__row">
           <input type="number" step="0.01" placeholder="Per min" value={form.perMin}
