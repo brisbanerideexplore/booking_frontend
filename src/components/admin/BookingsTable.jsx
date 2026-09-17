@@ -18,7 +18,7 @@ export default function BookingsTable() {
       <table className="admin-table">
         <thead>
           <tr>
-            <th>Date</th><th>Name</th><th>Passengers</th><th>Pickup</th><th>Drop-off</th>
+            <th>Date</th><th>Name</th><th>Passengers</th><th>Luggage</th><th>Pickup</th><th>Drop-off</th>
             <th>Pickup Date</th><th>Pickup Time</th><th>Vehicle</th><th>Fare</th><th>Status</th>
           </tr>
         </thead>
@@ -28,6 +28,7 @@ export default function BookingsTable() {
               <td>{new Date(b.createdAt).toLocaleString()}</td>
               <td>{b.name}</td>
               <td>{b.passengers}</td>
+              <td>{b.luggage}</td>
               <td>{b.pickupAddress}</td>
               <td>{b.destinationAddress}</td>
               <td>{b.pickupDate}</td>

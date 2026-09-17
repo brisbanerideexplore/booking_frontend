@@ -21,6 +21,7 @@ export default function BookingForm({ trip, onClose }) {
   const [passengers, setPassengers] = useState("1");
   const [pickupDate, setPickupDate] = useState("");
   const [pickupTime, setPickupTime] = useState("");
+  const [luggage, setLuggage] = useState("0");
 
   const canSubmit = name.trim() && email.trim() && phone.trim() && passengers && pickupDate && pickupTime && !loading;
 
@@ -37,6 +38,7 @@ export default function BookingForm({ trip, onClose }) {
           email,
           phone: `${countryCode}${phone.replace(/^0+/, "")}`,
           passengers: Number(passengers),
+          luggage: Number(luggage),
           pickupDate,
           pickupTime,
           pickupAddress: trip.pickup.address,
@@ -107,6 +109,15 @@ export default function BookingForm({ trip, onClose }) {
         value={passengers}
         onChange={(e) => setPassengers(e.target.value)}
         placeholder="1"
+      />
+
+      <label>No. of luggage</label>
+      <input
+        type="number"
+        min="0"
+        value={luggage}
+        onChange={(e) => setLuggage(e.target.value)}
+        placeholder="0"
       />
 
       <label>Pickup date</label>

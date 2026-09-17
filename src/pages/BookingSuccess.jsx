@@ -77,6 +77,7 @@ export default function BookingSuccess() {
               <div className="status-summary__row"><span>Pickup</span><strong>{booking.pickupAddress}</strong></div>
               <div className="status-summary__row"><span>Destination</span><strong>{booking.destinationAddress}</strong></div>
               <div className="status-summary__row"><span>Passengers</span><strong>{booking.passengers}</strong></div>
+              <div className="status-summary__row"><span>Luggage</span><strong>{booking.luggage}</strong></div>
               <div className="status-summary__row"><span>Pickup date</span><strong>{booking.pickupDate}</strong></div>
               <div className="status-summary__row"><span>Pickup time</span><strong>{booking.pickupTime}</strong></div>
               <div className="status-summary__row"><span>Vehicle</span><strong>{booking.vehicle}</strong></div>
