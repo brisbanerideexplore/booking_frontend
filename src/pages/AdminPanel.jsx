@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import RateManager from "../components/admin/RateManager";
 import BookingsTable from "../components/admin/BookingsTable";
 import "./AdminPanel.css";
+import { Helmet } from "react-helmet-async";
 
 export default function AdminPanel() {
   const [tab, setTab] = useState("rates");
@@ -15,6 +16,10 @@ export default function AdminPanel() {
 
   return (
     <div className="admin-page admin-page--panel">
+      <Helmet>
+        <title>Admin Panel — Brizzy Ride & Explore</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       <div className="admin-topbar">
         <h1>Admin Panel</h1>
         <button className="admin-logout" onClick={logout}>Log out</button>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import "./BookingStatus.css";
+import { Helmet } from 'react-helmet-async';
 
 const API_URL = import.meta.env.VITE_API_URL;
 const MAX_ATTEMPTS = 6;
@@ -61,6 +62,10 @@ export default function BookingSuccess() {
 
   return (
     <div className="status-page">
+      <Helmet>
+        <title>Booking Confirmed — Brizzy Ride & Explore</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       <div className="status-card">
         <div className="status-card__icon">✅</div>
         <h2 className="status-card__title">Booking confirmed!</h2>

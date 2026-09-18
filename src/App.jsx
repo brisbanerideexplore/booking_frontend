@@ -1,3 +1,4 @@
+import { HelmetProvider } from 'react-helmet-async';
 import { Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/Home';
 import BookingSuccess from './pages/BookingSuccess';
@@ -10,8 +11,8 @@ import Header from './components/Header';
 
 function App() {
   return (
-    <>
-    <Header/>
+    <HelmetProvider>
+      <Header/>
       <Link to="/admin-login" className="admin-nav-btn">Admin Login</Link>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -20,7 +21,7 @@ function App() {
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/admin" element={<AdminRoute><AdminPanel /></AdminRoute>} />
       </Routes>
-    </>
+    </HelmetProvider>
   );
 }
 

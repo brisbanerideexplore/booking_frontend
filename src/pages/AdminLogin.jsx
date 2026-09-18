@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AdminPanel.css";
+import { Helmet } from "react-helmet-async";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -34,6 +35,10 @@ export default function AdminLogin() {
 
   return (
     <div className="admin-page">
+      <Helmet>
+        <title>Admin Login — Brizzy Ride & Explore</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       <form className="admin-card" onSubmit={handleSubmit}>
         <h2>Admin Login</h2>
         <label>Username</label>
