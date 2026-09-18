@@ -151,3 +151,35 @@
     flex: 1;
   }
 }
+.booking-form__payment-row {
+  display: flex;
+  gap: 10px;
+}
+
+.booking-form__payment-option {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1.5px solid var(--line);
+  background: var(--cloud);
+  color: var(--ink-soft);
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.25s var(--ease);
+}
+
+.booking-form__payment-option:hover:not(:disabled) {
+  border-color: var(--brass-light);
+}
+
+.booking-form__payment-option--selected {
+  border-color: var(--brass);
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 0 0 3px rgba(184, 134, 59, 0.14);
+}
+
+.booking-form__payment-option:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}

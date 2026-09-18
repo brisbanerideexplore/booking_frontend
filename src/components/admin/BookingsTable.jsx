@@ -19,7 +19,7 @@ export default function BookingsTable() {
         <thead>
           <tr>
             <th>Date</th><th>Name</th><th>Passengers</th><th>Luggage</th><th>Pickup</th><th>Drop-off</th>
-            <th>Pickup Date</th><th>Pickup Time</th><th>Vehicle</th><th>Fare</th><th>Status</th>
+            <th>Pickup Date</th><th>Pickup Time</th><th>Vehicle</th><th>Payment</th><th>Fare</th><th>Status</th>
           </tr>
         </thead>
         <tbody>
@@ -34,6 +34,7 @@ export default function BookingsTable() {
               <td>{b.pickupDate}</td>
               <td>{b.pickupTime}</td>
               <td>{b.vehicle}</td>
+              <td>{b.paymentMethod === "cash" ? "💵 Cash" : "💳 Card"}</td>
               <td>${b.fare?.toFixed(2)}</td>
               <td>{b.paymentStatus}</td>
             </tr>
