@@ -88,6 +88,7 @@ export default function BookingSuccess() {
               <div className="status-summary__row"><span>Vehicle</span><strong>{booking.vehicle}</strong></div>
               <div className="status-summary__row"><span>Fare paid</span><strong>${booking.fare.toFixed(2)}</strong></div>
               <div className="status-summary__row"><span>Status</span><strong>{booking.paymentStatus}</strong></div>
+              <div className="status-summary__row"><span>Fare paid</span><strong>${(booking.fare ?? 0).toFixed(2)}</strong></div>
             </div>
           </>
         )}

@@ -100,12 +100,12 @@ export default function FareCalculator() {
         </div>
         <label style={{ display: "flex", alignItems: "center", gap: "8px", fontWeight: 500, fontSize: "14px" }}>
           <input
-          style={{marginTop:"20px"}}
+            style={{ marginTop: "20px" }}
             type="checkbox"
             checked={childSeat}
             onChange={(e) => setChildSeat(e.target.checked)}
           />
-          <p style={{marginTop:"20px", marginLeft:"10px"}}>Add child car seat (+$25)</p>
+          <p style={{ marginTop: "20px", marginLeft: "10px" }}>Add child car seat (+$25)</p>
         </label>
       </div>
 
@@ -132,6 +132,12 @@ export default function FareCalculator() {
             </div>
           )}
           <hr className="fare-result__divider" />
+          {fareResult.childSeat && (
+            <div className="fare-result__row">
+              <span>Child car seat</span>
+              <span>+${(fareResult.childSeatFee ?? 0).toFixed(2)}</span>
+            </div>
+          )}
           <div className="fare-result__total">
             <span className="fare-result__total-label">Total fare</span>
             <span className="fare-result__total-amount">${fareResult.fare.toFixed(2)}</span>
