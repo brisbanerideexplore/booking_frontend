@@ -128,19 +128,13 @@ export default function FareCalculator() {
           {fareResult.childSeat && (
             <div className="fare-result__row">
               <span>Child car seat</span>
-              <span>+${fareResult.childSeatFee.toFixed(2)}</span>
-            </div>
-          )}
-          <hr className="fare-result__divider" />
-          {fareResult.childSeat && (
-            <div className="fare-result__row">
-              <span>Child car seat</span>
               <span>+${(fareResult.childSeatFee ?? 0).toFixed(2)}</span>
             </div>
           )}
+          <hr className="fare-result__divider" />
           <div className="fare-result__total">
             <span className="fare-result__total-label">Total fare</span>
-            <span className="fare-result__total-amount">${fareResult.fare.toFixed(2)}</span>
+            <span className="fare-result__total-amount">${(fareResult.fare ?? 0).toFixed(2)}</span>
           </div>
 
           {!showBooking && (
